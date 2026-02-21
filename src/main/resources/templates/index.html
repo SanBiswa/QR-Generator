@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+    <div class="container">
+        <h1>🔲 QR Code Generator</h1>
+        
+        <div class="content-wrapper">
+            <!-- Form Section -->
+            <div class="form-section">
+                <form id="qrForm" enctype="multipart/form-data">
+                    
+                    <!-- QR Type Selection -->
+                    <div class="form-group">
+                        <label for="qrType">Select QR Code Type:</label>
+                        <select id="qrType" name="qrType" required>
+                            <option value="">-- Choose Type --</option>
+                            <option value="URL">Website URL</option>
+                            <option value="TEXT">Plain Text</option>
+                            <option value="FILE">File (PDF, Image, Excel, etc.)</option>
+                            <option value="VCARD">Contact Card (vCard)</option>
+                            <option value="WIFI">WiFi Credentials</option>
+                            <option value="EMAIL">Email Address</option>
+                        </select>
+                    </div>
+
+                    <!-- Dynamic Fields Container -->
+                    <div id="dynamicFields"></div>
+
+                    <!-- Customization Options -->
+                    <div class="customization">
+                        <h3>Customization (Optional)</h3>
+                        
+                        <div class="form-group">
+                            <label for="size">QR Code Size (px):</label>
+                            <input type="number" id="size" name="size" value="300" min="100" max="1000">
+                        </div>
+
+                        <div class="color-group">
+                            <div class="form-group">
+                                <label for="foregroundColor">Foreground Color:</label>
+                                <input type="color" id="foregroundColor" name="foregroundColor" value="#000000">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="backgroundColor">Background Color:</label>
+                                <input type="color" id="backgroundColor" name="backgroundColor" value="#ffffff">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Buttons -->
+                    <div class="button-group">
+                        <button type="submit" class="btn btn-primary">Generate QR Code</button>
+                        <button type="button" id="downloadBtn" class="btn btn-success" style="display: none;">
+                            Download QR Code
+                        </button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="preview-section">
+                <h3>Preview</h3>
+                <div id="qrPreview" class="qr-preview">
+                    <p class="placeholder">Your QR code will appear here</p>
+                </div>
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script th:src="@{/js/script.js}"></script>
+</body>
+</html>
