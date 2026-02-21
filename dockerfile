@@ -22,4 +22,4 @@ RUN ./mvnw clean package -DskipTests
 EXPOSE 8080
 
 # Run the application
-CMD ["java", "-jar", "target/QR-Code-Generator-1.0.0.jar"]
+CMD ["java", "-jar", "target/QR-Code-Generator-1.0.0-SNAPSHOT.jar"]
